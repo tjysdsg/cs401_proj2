@@ -7,7 +7,7 @@ router = APIRouter()
 
 
 class ResponseModel(BaseModel):
-    is_us: int = 0
+    is_american: int = 0
 
 
 class InputModel(BaseModel):
@@ -20,7 +20,7 @@ def text_clf_api(in_: InputModel):
 
     model = load_model()
     res = inference(model, in_.text)
-    return ResponseModel(is_us=res)
+    return ResponseModel(is_american=res)
 
 
 def create_app():
