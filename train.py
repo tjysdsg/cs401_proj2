@@ -1,8 +1,8 @@
-import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
+import pickle
 
 
 def main():
@@ -20,7 +20,12 @@ def main():
     model = GaussianNB()
     model.fit(X_train, y_train)
     acc = model.score(X_test, y_test)
-    print(acc)
+    print(f'Accuracy: {acc}')
+
+    pickle.dump(
+        dict(model=model, vectorizer=extractor),
+        open('model.pkl', 'wb')
+    )
 
 
 if __name__ == '__main__':
