@@ -1,3 +1,5 @@
+import os
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import APIRouter
@@ -38,3 +40,11 @@ def create_app():
     )
 
     return app
+
+
+if __name__ == '__main__':
+    app = create_app()
+    server_port = int(os.environ.get('GOP_SERVER_PORT'))
+    if server_port is None:
+        server_port = 8080
+    uvicorn.run(app, host="0.0.0.0", port=server_port)
