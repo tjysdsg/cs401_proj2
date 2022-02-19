@@ -4,6 +4,23 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 import pickle
 
+PRETRAINED_PATH = 'model.pkl'
+
+
+def load_model():
+    pretrained = pickle.load(open(PRETRAINED_PATH, 'rb'))
+    model = pretrained['model']
+    vectorizer = pretrained['vectorizer']
+    return model, vectorizer
+
+
+def inference(pretrained, text: str):
+    model, vectorizer = pretrained
+
+    feats = vectorizer.transform([text]).toarray()
+    res = model.predict(feats)
+    return res[0]
+
 
 def main():
     df = pd.read_csv('training.csv', delimiter=';')
@@ -24,7 +41,7 @@ def main():
 
     pickle.dump(
         dict(model=model, vectorizer=extractor),
-        open('model.pkl', 'wb')
+        open(PRETRAINED_PATH, 'wb')
     )
 
 
