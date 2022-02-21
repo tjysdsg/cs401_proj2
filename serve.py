@@ -16,7 +16,7 @@ class InputModel(BaseModel):
     text: constr(min_length=1)
 
 
-@router.post("/", response_model=ResponseModel)
+@router.post("/api/american", response_model=ResponseModel)
 def text_clf_api(in_: InputModel):
     from train import load_model, inference
 
@@ -44,7 +44,10 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    server_port = int(os.environ.get('GOP_SERVER_PORT'))
+    server_port = int(os.environ.get('SERVER_PORT'))
     if server_port is None:
         server_port = 8080
-    uvicorn.run(app, host="0.0.0.0", port=server_port)
+
+    host = "0.0.0.0"
+    print(f'Running on {host}:{server_port}')
+    uvicorn.run(app, host=host, port=server_port)

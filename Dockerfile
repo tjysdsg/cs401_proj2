@@ -6,6 +6,7 @@ RUN pip3 install fastapi[all] scikit-learn numpy pandas
 
 # FIXME: dockerfile shouldn't include the model
 COPY model.pkl .
+COPY train.py .
 COPY serve.py .
 COPY serve.sh .
 

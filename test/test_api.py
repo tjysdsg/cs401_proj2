@@ -4,7 +4,7 @@ from serve import create_app
 
 def test_get():
     client = TestClient(create_app())
-    response = client.post('/', json={
+    response = client.post('/api/american', json={
         'text': 'As we move forward together during the #COVID19 crisis,'
                 'we are saying #thankyou to all our medical volunteers'
     })
