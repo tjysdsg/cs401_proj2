@@ -1,0 +1,9 @@
+project: jt304-project
+source:
+  repoURL: 'https://github.com/tjysdsg/cs401_proj2'
+  path: .
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: jt304
+syncPolicy:
+  automated: { }
