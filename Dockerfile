@@ -1,10 +1,7 @@
-FROM ubuntu:latest
+FROM python:3.9-bullseye
 
 WORKDIR /root
 
-RUN apt-get update
-
-RUN apt-get install -y python3 python3-pip
 RUN pip3 install fastapi[all] scikit-learn numpy pandas
 
 COPY model.pkl .
