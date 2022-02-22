@@ -25,6 +25,11 @@ def text_clf_api(in_: InputModel):
     return ResponseModel(is_american=res)
 
 
+def download_model():
+    import urllib.request
+    urllib.request.urlretrieve("https://raw.githubusercontent.com/tjysdsg/cs401_proj2/master/model.pkl", "model.pkl")
+
+
 def create_app():
     app = FastAPI()
     app.include_router(router)
@@ -38,6 +43,8 @@ def create_app():
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    download_model()
 
     return app
 
