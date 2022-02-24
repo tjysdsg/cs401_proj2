@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: cs401-proj2
-          image: quay.io/tjysdsg/stats401_proj2:latest
+          image: quay.io/tjysdsg/stats401_proj2:v2
           ports:
             - containerPort: 5009

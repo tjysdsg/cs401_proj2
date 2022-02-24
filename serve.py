@@ -10,6 +10,8 @@ router = APIRouter()
 
 class ResponseModel(BaseModel):
     is_american: int = 0
+    version: str = '2.0'
+    model_date: str = '2022.02.19'
 
 
 class InputModel(BaseModel):
